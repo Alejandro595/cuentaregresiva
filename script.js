@@ -26,27 +26,30 @@ function actualizarCuenta(){
 
     const diferencia = objetivo - ahora;
 
-    if(diferencia <= 0){
+   if(diferencia <= 0){
 
-        document.querySelector(".container").innerHTML = `
+    document.querySelector(".container").innerHTML = `
 
-            <h1 class="final">
+        <h1 class="final">
+            ¡YA ESTÁ EN YOUTUBE!
+        </h1>
 
-                ¡YA ESTÁ EN YOUTUBE!
+        <p style="
+            margin-top:25px;
+            color:#deb6ff;
+            font-size:22px;
+        ">
+            Escanea el código QR
+        </p>
 
-            </h1>
+        <img src="qr.jpg" class="qr">
 
-        `;
+    `;
 
-        setTimeout(function(){
 
-            window.location.href="https://youtu.be/TU_ENLACE";
+    return;
 
-        },3000);
-
-        return;
-
-    }
+}
 
     const dias = Math.floor(diferencia/(1000*60*60*24));
 
