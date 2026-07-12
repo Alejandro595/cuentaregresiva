@@ -1,4 +1,4 @@
-function actualizarCuenta() {
+function actualizarCuenta(){
 
     const ahora = new Date();
 
@@ -11,10 +11,7 @@ function actualizarCuenta() {
         0
     );
 
-    // Si ya pasó el 18 de julio de este año,
-    // apunta al siguiente año.
-
-    if (ahora > objetivo) {
+    if(ahora > objetivo){
 
         objetivo = new Date(
             ahora.getFullYear() + 1,
@@ -29,32 +26,43 @@ function actualizarCuenta() {
 
     const diferencia = objetivo - ahora;
 
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    if(diferencia <= 0){
 
-    const horas = Math.floor(
-        (diferencia % (1000 * 60 * 60 * 24)) /
-        (1000 * 60 * 60)
-    );
+        document.querySelector(".container").innerHTML = `
 
-    const minutos = Math.floor(
-        (diferencia % (1000 * 60 * 60)) /
-        (1000 * 60)
-    );
+            <h1 class="final">
 
-    const segundos = Math.floor(
-        (diferencia % (1000 * 60)) / 1000
-    );
+                ¡YA ESTÁ EN YOUTUBE!
 
-    document.getElementById("days").innerHTML = dias;
+            </h1>
 
-    document.getElementById("hours").innerHTML =
-        String(horas).padStart(2, "0");
+        `;
 
-    document.getElementById("minutes").innerHTML =
-        String(minutos).padStart(2, "0");
+        setTimeout(function(){
 
-    document.getElementById("seconds").innerHTML =
-        String(segundos).padStart(2, "0");
+            window.location.href="https://youtu.be/TU_ENLACE";
+
+        },3000);
+
+        return;
+
+    }
+
+    const dias = Math.floor(diferencia/(1000*60*60*24));
+
+    const horas = Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
+
+    const minutos = Math.floor((diferencia%(1000*60*60))/(1000*60));
+
+    const segundos = Math.floor((diferencia%(1000*60))/1000);
+
+    document.getElementById("days").textContent=dias;
+
+    document.getElementById("hours").textContent=String(horas).padStart(2,"0");
+
+    document.getElementById("minutes").textContent=String(minutos).padStart(2,"0");
+
+    document.getElementById("seconds").textContent=String(segundos).padStart(2,"0");
 
 }
 
